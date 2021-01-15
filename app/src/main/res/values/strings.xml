@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">KnowledgeStateExam</string>
+    <string name="select_item">Select an item</string>
+    <string name="item_biology">Biology</string>
+    <string name="item_informatics">Informatics</string>
+    <string name="item_history">History</string>
+    <string name="item_mathematics">Mathematics</string>
+    <string name="item_social_studies">Social Studies</string>
+    <string name="item_russian_language">Russian Language</string>
+    <string name="item_physics">Physics</string>
+    <string name="item_chemistry">Chemistry</string>
 </resources>

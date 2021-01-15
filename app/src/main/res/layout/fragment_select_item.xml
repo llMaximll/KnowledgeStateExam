@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        style="?android:buttonStyleSmall"
+        android:id="@+id/match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/item_biology"/>
+
+    <Button
+        style="?android:buttonStyleSmall"
+        android:id="@+id/item_informatics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/item_informatics"/>
+
+    <Button
+        style="?android:buttonStyleSmall"
+        android:id="@+id/item_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/item_history"/>
+
+    <Button
+        style="?android:buttonStyleSmall"
+        android:id="@+id/item_mathematics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/item_mathematics"/>
+
+    <Button
+        style="?android:buttonStyleSmall"
+        android:id="@+id/item_social_studies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/item_social_studies"/>
+
+    <Button
+        style="?android:buttonStyleSmall"
+        android:id="@+id/item_russian_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/item_russian_language"/>
+
+    <Button
+        style="?android:buttonStyleSmall"
+        android:id="@+id/item_physics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/item_physics"/>
+
+    <Button
+        style="?android:buttonStyleSmall"
+        android:id="@+id/item_chemistry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/item_chemistry"/>
+
+</LinearLayout>
