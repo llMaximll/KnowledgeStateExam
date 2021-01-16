@@ -54,7 +54,7 @@ class SelectItemFragment : Fragment() {
         super.onStart()
 
         biologyButton.setOnClickListener {
-            ChooseModeFragment.newInstance(0, item.id).apply {
+            ChooseModeFragment.newInstance(item.id).apply {
                 show(this@SelectItemFragment.requireFragmentManager(), DIALOG_MODE)
             }
         }

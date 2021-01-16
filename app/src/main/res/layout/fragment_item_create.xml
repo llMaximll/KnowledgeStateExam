@@ -18,6 +18,7 @@
         android:textSize="25sp" />
 
     <EditText
+        android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your question" />
@@ -29,6 +30,7 @@
         android:textSize="25sp" />
 
     <EditText
+        android:id="@+id/answer_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your question" />
@@ -40,6 +42,7 @@
         android:textSize="25sp" />
 
     <EditText
+        android:id="@+id/answer_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your question" />
@@ -51,6 +54,7 @@
         android:textSize="25sp" />
 
     <EditText
+        android:id="@+id/answer_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your question" />
@@ -62,6 +66,7 @@
         android:textSize="25sp" />
 
     <EditText
+        android:id="@+id/answer_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your question" />
@@ -73,8 +78,15 @@
         android:textSize="25sp" />
 
     <EditText
+        android:id="@+id/correct_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter the number of the correct answer" />
+
+    <Button
+        android:id="@+id/add_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add item" />
 
 </LinearLayout>

@@ -50,9 +50,8 @@ class ChooseModeFragment : DialogFragment() {
     }
 
     companion object {
-        fun newInstance(itemCount: Int, itemId: UUID): ChooseModeFragment {
+        fun newInstance(itemId: UUID): ChooseModeFragment {
             val args = Bundle().apply {
-                putSerializable(ARG_MODE, itemCount)
                 putSerializable(ARG_ITEM_ID, itemId)
             }
             return ChooseModeFragment().apply {

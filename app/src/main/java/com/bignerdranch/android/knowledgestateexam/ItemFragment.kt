@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import java.util.*
 
 private const val ARG_ITEM_ID = "item_id"
@@ -12,11 +15,21 @@ private const val ARG_ITEM_ID = "item_id"
 class ItemFragment : Fragment() {
 
     private lateinit var item: Item
+    private lateinit var questionTextView: TextView
+    private lateinit var answer1: Button
+    private lateinit var answer2: Button
+    private lateinit var answer3: Button
+    private lateinit var answer4: Button
+
+    private val itemDetailViewModel: ItemViewModel by lazy {
+        ViewModelProvider(this).get(ItemViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         item = Item()
-        val itemId = arguments?.getSerializable(ARG_ITEM_ID) as UUID?
+        val itemId = arguments?.getSerializable(ARG_ITEM_ID) as UUID
+        itemDetailViewModel.loadItem(itemId)
     }
 
     override fun onCreateView(
@@ -26,7 +39,34 @@ class ItemFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_item, container, false)
 
+        questionTextView = view.findViewById(R.id.question)
+        answer1 = view.findViewById(R.id.answer_1)
+        answer2 = view.findViewById(R.id.answer_2)
+        answer3 = view.findViewById(R.id.answer_3)
+        answer4 = view.findViewById(R.id.answer_4)
+
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        itemDetailViewModel.itemLiveData.observe(
+            viewLifecycleOwner,
+            { item ->
+                item?.let {
+                    this.item = item
+                    updateUI()
+                }
+            }
+        )
+    }
+
+    private fun updateUI() {
+        questionTextView.text = item.question
+        answer1.text = item.answerString1
+        answer2.text = item.answerString2
+        answer3.text = item.answerString3
+        answer4.text = item.answerString4
     }
 
     companion object {

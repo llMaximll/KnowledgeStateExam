@@ -9,7 +9,8 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(),
     StartFragment.Callbacks,
-    ChooseModeFragment.Callbacks {
+    ChooseModeFragment.Callbacks,
+    ItemCreateFragment.Callbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +45,15 @@ class MainActivity : AppCompatActivity(),
                 ItemCreateFragment.newInstance()
             }
         }
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onItemChanges(itemId: UUID) {
+        val fragment = ItemFragment.newInstance(itemId)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)

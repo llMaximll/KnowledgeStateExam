@@ -6,6 +6,8 @@ import androidx.room.Room
 import com.bignerdranch.android.knowledgestateexam.database.ItemDatabase
 import java.lang.IllegalStateException
 import java.util.*
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
 
 private const val DATABASE_NAME = "item-databse"
 
@@ -18,10 +20,23 @@ class ItemRepository private constructor(context: Context) {
     ).build()
 
     private val itemDao = database.itemDao()
+    private val executor = Executors.newSingleThreadExecutor() //Создание экземпляра исполнителя
 
     fun getItems(): LiveData<List<Item>> = itemDao.getItems()
 
     fun getItem(id: UUID): LiveData<Item?> = itemDao.getItem(id)
+
+    fun updateItem(item: Item) {
+        executor.execute {
+            itemDao.updateItem(item)
+        }
+    }
+
+    fun addItem(item: Item) {
+        executor.execute {
+            itemDao.addItem(item)
+        }
+    }
 
     companion object {
         private var INSTANCE: ItemRepository? = null
