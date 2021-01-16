@@ -39,7 +39,7 @@ class StartFragment : Fragment() {
         super.onStart()
 
         startButton.setOnClickListener {
-            callbacks?.onSelectedItem()
+            callbacks?.onStartButton()
         }
     }
 

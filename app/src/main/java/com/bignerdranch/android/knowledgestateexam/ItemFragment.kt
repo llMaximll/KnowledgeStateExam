@@ -16,7 +16,7 @@ class ItemFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         item = Item()
-        val itemId = arguments?.getSerializable(ARG_ITEM_ID) as UUID
+        val itemId = arguments?.getSerializable(ARG_ITEM_ID) as UUID?
     }
 
     override fun onCreateView(

@@ -2,11 +2,14 @@ package com.bignerdranch.android.knowledgestateexam
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.FrameLayout
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import java.util.*
 
 class MainActivity : AppCompatActivity(),
     StartFragment.Callbacks,
-    SelectItemFragment.Callbacks {
+    ChooseModeFragment.Callbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +36,14 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun onSelectedItem(itemId: UUID) {
-        val fragment = ItemFragment.newInstance(itemId)
+    override fun onSelectedMode(itemId: UUID, mode: Boolean) {
+        val fragment: Fragment = when (mode) {
+            true -> {
+                ItemFragment.newInstance(itemId)
+            } else -> {
+                ItemCreateFragment.newInstance()
+            }
+        }
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
