@@ -7,7 +7,7 @@ import java.util.*
 @Entity
 data class Item(@PrimaryKey val id: UUID = UUID.randomUUID(),
                 var question: String = "",
-                var item: String = "",
+                var itemName: String = "",
                 var answerString1: String = "",
                 var answerString2: String = "",
                 var answerString3: String = "",

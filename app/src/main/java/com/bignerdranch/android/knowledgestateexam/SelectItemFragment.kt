@@ -1,6 +1,5 @@
 package com.bignerdranch.android.knowledgestateexam
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,13 +53,75 @@ class SelectItemFragment : Fragment() {
         super.onStart()
 
         biologyButton.setOnClickListener {
-            ChooseModeFragment.newInstance(item.id).apply {
+            val itemName = "Biology"
+
+            ItemRepository.itemName = itemName
+            ChooseModeFragment.newInstance(itemName).apply {
+                show(this@SelectItemFragment.requireFragmentManager(), DIALOG_MODE)
+            }
+        }
+
+        informaticsButton.setOnClickListener {
+            val itemName = "Informatics"
+
+            ItemRepository.itemName = itemName
+            ChooseModeFragment.newInstance(itemName).apply {
+                show(this@SelectItemFragment.requireFragmentManager(), DIALOG_MODE)
+            }
+        }
+
+        historyButton.setOnClickListener {
+            val itemName = "History"
+
+            ItemRepository.itemName = itemName
+            ChooseModeFragment.newInstance(itemName).apply {
+                show(this@SelectItemFragment.requireFragmentManager(), DIALOG_MODE)
+            }
+        }
+
+        mathematicsButton.setOnClickListener {
+            val itemName = "Mathematics"
+
+            ItemRepository.itemName = itemName
+            ChooseModeFragment.newInstance(itemName).apply {
+                show(this@SelectItemFragment.requireFragmentManager(), DIALOG_MODE)
+            }
+        }
+
+        socialStudiesButton.setOnClickListener {
+            val itemName = "Social"
+
+            ItemRepository.itemName = itemName
+            ChooseModeFragment.newInstance(itemName).apply {
+                show(this@SelectItemFragment.requireFragmentManager(), DIALOG_MODE)
+            }
+        }
+
+        russianButton.setOnClickListener {
+            val itemName = "Russian"
+
+            ItemRepository.itemName = itemName
+            ChooseModeFragment.newInstance(itemName).apply {
+                show(this@SelectItemFragment.requireFragmentManager(), DIALOG_MODE)
+            }
+        }
+
+        physicsButton.setOnClickListener {
+            val itemName = "Physics"
+
+            ItemRepository.itemName = itemName
+            ChooseModeFragment.newInstance(itemName).apply {
                 show(this@SelectItemFragment.requireFragmentManager(), DIALOG_MODE)
             }
         }
 
         chemistryButton.setOnClickListener {
-            Toast.makeText(context, "Chemistry!", Toast.LENGTH_SHORT).show()
+            val itemName = "Chemistry"
+
+            ItemRepository.itemName = itemName
+            ChooseModeFragment.newInstance(itemName).apply {
+                show(this@SelectItemFragment.requireFragmentManager(), DIALOG_MODE)
+            }
         }
     }
 

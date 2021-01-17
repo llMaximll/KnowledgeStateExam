@@ -21,7 +21,7 @@ class ItemFragment : Fragment() {
     private lateinit var answer3: Button
     private lateinit var answer4: Button
 
-    private val itemDetailViewModel: ItemViewModel by lazy {
+    private val itemViewModel: ItemViewModel by lazy {
         ViewModelProvider(this).get(ItemViewModel::class.java)
     }
 
@@ -29,7 +29,7 @@ class ItemFragment : Fragment() {
         super.onCreate(savedInstanceState)
         item = Item()
         val itemId = arguments?.getSerializable(ARG_ITEM_ID) as UUID
-        itemDetailViewModel.loadItem(itemId)
+        itemViewModel.loadItem(itemId)
     }
 
     override fun onCreateView(
@@ -50,7 +50,7 @@ class ItemFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        itemDetailViewModel.itemLiveData.observe(
+        itemViewModel.itemLiveData.observe(
             viewLifecycleOwner,
             { item ->
                 item?.let {

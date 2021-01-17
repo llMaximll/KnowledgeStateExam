@@ -5,16 +5,13 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
-import java.util.*
 
-
-private const val ARG_MODE = "mode"
 private const val ARG_ITEM_ID = "itemId"
 
 class ChooseModeFragment : DialogFragment() {
 
     interface Callbacks {
-        fun onSelectedMode(itemId: UUID, mode: Boolean)
+        fun onSelectedMode(itemName: String, mode: Boolean)
     }
 
     private var callbacks: Callbacks? = null
@@ -26,16 +23,16 @@ class ChooseModeFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        val itemId = arguments?.getSerializable(ARG_ITEM_ID) as UUID
+        val itemName = arguments?.getSerializable(ARG_ITEM_ID) as String
 
         val alertDialog: AlertDialog.Builder = AlertDialog.Builder(context)
             .setTitle("Mode")
             .setMessage("Choose mode")
             .setPositiveButton("Yes") { _, _ ->
-                callbacks?.onSelectedMode(itemId, true)
+                callbacks?.onSelectedMode(itemName, true)
             }
             .setNegativeButton("No") { _, _ ->
-                callbacks?.onSelectedMode(itemId, false)
+                callbacks?.onSelectedMode(itemName, false)
             }
             .setNeutralButton("Cancel") { _, _ ->
                 // Cancel
@@ -50,9 +47,9 @@ class ChooseModeFragment : DialogFragment() {
     }
 
     companion object {
-        fun newInstance(itemId: UUID): ChooseModeFragment {
+        fun newInstance(itemName: String): ChooseModeFragment {
             val args = Bundle().apply {
-                putSerializable(ARG_ITEM_ID, itemId)
+                putSerializable(ARG_ITEM_ID, itemName)
             }
             return ChooseModeFragment().apply {
                 arguments = args

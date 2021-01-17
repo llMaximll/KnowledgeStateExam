@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import java.util.*
 
+private const val ARG_ITEM_NAME = "itemName"
+
 class ItemCreateFragment : Fragment() {
 
     interface Callbacks {
@@ -32,10 +34,12 @@ class ItemCreateFragment : Fragment() {
     private lateinit var answer3: EditText
     private lateinit var answer4: EditText
     private lateinit var answerCount: EditText
+    private lateinit var newItemName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         item = Item()
+        newItemName = arguments?.getSerializable(ARG_ITEM_NAME) as String
     }
 
     override fun onAttach(context: Context) {
@@ -94,13 +98,13 @@ class ItemCreateFragment : Fragment() {
         addItem.setOnClickListener {
             val item = Item()
             item.question = question.text.toString()
+            item.itemName = newItemName
             item.answerInt = answerCount.text.toString().toInt()
             item.answerString1 = answer1.text.toString()
             item.answerString2 = answer2.text.toString()
             item.answerString3 = answer3.text.toString()
             item.answerString4 = answer4.text.toString()
             itemCreateViewModel.addItem(item)
-            itemCreateViewModel.saveItem(item)
             callbacks?.onItemChanges(item.id)
         }
     }
@@ -111,8 +115,13 @@ class ItemCreateFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(): ItemCreateFragment {
-            return ItemCreateFragment()
+        fun newInstance(newItemName: String): ItemCreateFragment {
+            val args = Bundle().apply {
+                putSerializable(ARG_ITEM_NAME, newItemName)
+            }
+            return ItemCreateFragment().apply {
+                arguments = args
+            }
         }
     }
 }

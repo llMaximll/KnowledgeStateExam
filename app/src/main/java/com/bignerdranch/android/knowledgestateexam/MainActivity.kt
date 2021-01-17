@@ -1,16 +1,15 @@
 package com.bignerdranch.android.knowledgestateexam
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import java.util.*
 
 class MainActivity : AppCompatActivity(),
     StartFragment.Callbacks,
     ChooseModeFragment.Callbacks,
-    ItemCreateFragment.Callbacks {
+    ItemCreateFragment.Callbacks,
+    ListQuestionsFragment.Callbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +36,12 @@ class MainActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun onSelectedMode(itemId: UUID, mode: Boolean) {
+    override fun onSelectedMode(itemName: String, mode: Boolean) {
         val fragment: Fragment = when (mode) {
             true -> {
-                ItemFragment.newInstance(itemId)
+                ListQuestionsFragment.newInstance()
             } else -> {
-                ItemCreateFragment.newInstance()
+                ItemCreateFragment.newInstance(itemName)
             }
         }
         supportFragmentManager
@@ -53,6 +52,15 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onItemChanges(itemId: UUID) {
+        val fragment = ItemFragment.newInstance(itemId)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onListQuestionsSelected(itemId: UUID) {
         val fragment = ItemFragment.newInstance(itemId)
         supportFragmentManager
             .beginTransaction()

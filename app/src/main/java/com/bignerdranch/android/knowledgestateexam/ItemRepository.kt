@@ -4,11 +4,10 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.bignerdranch.android.knowledgestateexam.database.ItemDatabase
-import java.lang.IllegalStateException
 import java.util.*
-import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
+private const val LOG = "ItemRepository"
 private const val DATABASE_NAME = "item-databse"
 
 class ItemRepository private constructor(context: Context) {
@@ -25,6 +24,8 @@ class ItemRepository private constructor(context: Context) {
     fun getItems(): LiveData<List<Item>> = itemDao.getItems()
 
     fun getItem(id: UUID): LiveData<Item?> = itemDao.getItem(id)
+
+    fun getItemName(): LiveData<List<Item>> = itemDao.getItemName(itemName)
 
     fun updateItem(item: Item) {
         executor.execute {
@@ -43,7 +44,7 @@ class ItemRepository private constructor(context: Context) {
 
         fun initialize(context: Context) {
             if (INSTANCE == null) {
-                INSTANCE= ItemRepository(context)
+                INSTANCE = ItemRepository(context)
             }
         }
 
@@ -51,5 +52,7 @@ class ItemRepository private constructor(context: Context) {
             return INSTANCE ?:
             throw IllegalStateException("ItemRepository must be initialized")
         }
+
+        var itemName: String = ""
     }
 }

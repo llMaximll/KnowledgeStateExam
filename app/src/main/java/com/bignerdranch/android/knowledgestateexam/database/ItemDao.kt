@@ -15,7 +15,10 @@ interface ItemDao {
     fun getItems(): LiveData<List<Item>>
 
     @Query("SELECT * FROM item WHERE id=(:id)")
-    fun getItem(id : UUID): LiveData<Item?>
+    fun getItem(id: UUID): LiveData<Item?>
+
+    @Query("SELECT * FROM item WHERE itemName=(:itemName)")
+    fun getItemName(itemName: String): LiveData<List<Item>>
 
     @Update
     fun updateItem(item: Item)
