@@ -28,10 +28,10 @@ class ChooseModeFragment : DialogFragment() {
         val alertDialog: AlertDialog.Builder = AlertDialog.Builder(context)
             .setTitle("Mode")
             .setMessage("Choose mode")
-            .setPositiveButton("Yes") { _, _ ->
+            .setPositiveButton("List of available") { _, _ ->
                 callbacks?.onSelectedMode(itemName, true)
             }
-            .setNegativeButton("No") { _, _ ->
+            .setNegativeButton("Create a new question") { _, _ ->
                 callbacks?.onSelectedMode(itemName, false)
             }
             .setNeutralButton("Cancel") { _, _ ->

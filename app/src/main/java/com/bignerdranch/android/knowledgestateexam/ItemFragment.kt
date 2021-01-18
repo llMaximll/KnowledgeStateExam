@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import java.util.*
@@ -59,6 +60,70 @@ class ItemFragment : Fragment() {
                 }
             }
         )
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        answer1.setOnClickListener {
+            when (item.answerInt) {
+                1 -> Toast.makeText(
+                    context,
+                    "True!",
+                    Toast.LENGTH_SHORT)
+                    .show()
+                else -> Toast.makeText(
+                    context,
+                    "False!",
+                    Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+        answer2.setOnClickListener {
+            when (item.answerInt) {
+                2 -> Toast.makeText(
+                    context,
+                    "True!",
+                    Toast.LENGTH_SHORT)
+                    .show()
+                else -> Toast.makeText(
+                    context,
+                    "False!",
+                    Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+        answer3.setOnClickListener {
+            when (item.answerInt) {
+                3 -> Toast.makeText(
+                    context,
+                    "True!",
+                    Toast.LENGTH_SHORT)
+                    .show()
+                else -> Toast.makeText(
+                    context,
+                    "False!",
+                    Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+        answer4.setOnClickListener {
+            when (item.answerInt) {
+                4 -> Toast.makeText(
+                    context,
+                    "True!",
+                    Toast.LENGTH_SHORT)
+                    .show()
+                else -> Toast.makeText(
+                    context,
+                    "False!",
+                    Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
     }
 
     private fun updateUI() {

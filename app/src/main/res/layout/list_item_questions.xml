@@ -2,29 +2,29 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="70dp"
+    android:orientation="horizontal"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <TextView
-        android:id="@+id/itemId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="itemId"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Question"
-        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/answer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Answer"
-        android:textSize="20sp"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        tools:text="1"
+        android:textSize="22sp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:padding="4dp"
+        android:gravity="center_vertical"
+        tools:text="Question"
+        android:textSize="20sp"
+        android:textColor="@color/black" />
 
 </LinearLayout>

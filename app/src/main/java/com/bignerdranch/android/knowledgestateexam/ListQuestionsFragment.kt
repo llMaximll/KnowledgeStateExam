@@ -25,6 +25,7 @@ class ListQuestionsFragment : Fragment() {
     private var callbacks: Callbacks? = null
     private lateinit var itemRecyclerView: RecyclerView
     private var adapter: ItemAdapter? = ItemAdapter(emptyList())
+    private var answerCount = 1
 
     private val itemListViewModel: ListQuestionsViewModel by lazy {
         ViewModelProvider(this).get(ListQuestionsViewModel::class.java)
@@ -79,7 +80,6 @@ class ListQuestionsFragment : Fragment() {
 
         private lateinit var item: Item
 
-        private val itemIdTextView: TextView = itemView.findViewById(R.id.itemId)
         private val questionTextView: TextView = itemView.findViewById(R.id.question)
         private val answerTextView: TextView = itemView.findViewById(R.id.answer)
 
@@ -89,20 +89,15 @@ class ListQuestionsFragment : Fragment() {
 
         fun bind(item: Item) {
             this.item = item
-            itemIdTextView.text = this.item.id.toString()
-            questionTextView.text = this.item.question
-            answerTextView.text = this.item.answerInt.toString()
+            questionTextView.text = if (this.item.question.length > 50) "${this.item.question.substring(0, 50)}..." else this.item.question
+            answerTextView.text = answerCount.toString()
+            answerCount++
         }
 
         override fun onClick(p0: View?) {
 
+            answerCount = 1
             callbacks?.onListQuestionsSelected(item.id)
-
-            Toast.makeText(
-                context,
-                "${questionTextView.text}",
-                Toast.LENGTH_SHORT)
-                .show()
         }
     }
 
